@@ -3,7 +3,7 @@ Intentionally vulnerable application (home assignment) for [S22] Network and Cyb
 
 The application works on Flask framework and contains these intended vulnerabilities:
 * SQL Injection
-
+ 
 ## Authors
 The assignment was done by Kirill Ivanov, Ilya Kolomin.
 
