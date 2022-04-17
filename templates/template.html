@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    {% block head %}
+    <title>
+        {% block title %}
+        Very cool site
+        {% endblock %}
+    </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    {% endblock %}
+</head>
+
+<body>
+    <header>
+        {% block header %}
+        <a href="/index.html"><h1 id="site_name">Very cool site</h1></a>
+        {% endblock %}
+    </header>
+
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <footer>
+        {% block footer %}
+        Very cool footer
+        {% endblock %}
+    </footer>
+</body>
+
+</html>

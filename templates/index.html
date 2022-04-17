@@ -1,18 +1,10 @@
-<html>
+{% extends "template.html" %}
 
-<head></head>
 
-<body>
-    <header>
-        <title>Sample app</title>
-    </header>
+{% block content %}
+<h1>Hello, World!</h1>
 
-    <h1>Hello, World!</h1>
-    
-    <div>
-        <a href="/feedback">>Read feedback here<</a>
-    </div>
-
-</body>
-
-</html>
+<div>
+    <a href="/feedback">>Read feedback here<</a>
+</div>
+{% endblock %}

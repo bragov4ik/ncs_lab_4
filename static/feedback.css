@@ -1,0 +1,44 @@
+#feedback_list {
+    display: flex;
+    flex-direction: column;
+}
+
+#feedback_add {
+    margin: 1em 0;
+}
+
+#feedback_form {
+    display: flex;
+    flex-direction: column;
+}
+
+#feedback_field {    
+    resize:both;
+}
+
+#submitted {
+    color: grey;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+}
+
+.feedback {
+    margin: .1em 0;
+}
+
+.entry {
+    display: flex;
+    flex-direction: column;
+    margin: .3em 0;
+}
+
+.author {
+    color: grey;
+}
+
+.paragraph {
+    font-style: italic;
+}

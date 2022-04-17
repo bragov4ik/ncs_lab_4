@@ -1,21 +1,43 @@
-<html>
+{% extends "template.html" %}
 
-<head></head>
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='feedback.css') }}">
+{% endblock %}
 
-<body>
-    <header>
-        <title>Sample app feedback</title>
-    </header>
-
-    <h1>Feedback</h1>
-    
-    <div>
-        {% for e in entries %}
-            <h3>{{ e[0] }}</h3>
-            <p>{{ e[1] }}</p>
-        {% endfor %}
+{% block content %}
+<h1>Feedback</h1>
+<div class="list">
+{% for e in entries %}
+    <div class="feedback entry">
+        <div class="feedback paragraph">{{ e[1] }}</div>
+        <div class="feedback author">- {{ e[0] }}</div>
     </div>
-
-</body>
-
-</html>
+{% endfor %}
+</div>
+<div id="feedback_add">
+    <h2>Add feedback</h2>
+    {% if submitted %}
+        <p id="Submitted">Feedback submitted successfully</p>
+    {% endif %}
+    <form id="feedback_form" action="" method="post">
+        <div>
+            <label for="name">Name:</label><br>
+            <input name="author" type="text" id="name">
+        </div>
+        <div>
+            <label for="feedback_field">Feedback:</label><br>
+            <textarea name="text" type="text" id="feedback_field"></textarea>
+        </div>
+        <div>
+            <input type="submit" value="Save">
+        </div>
+    </form>
+</div>
+<!-- Avoid resubmission on refresh -->
+<script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>
+{% endblock %}

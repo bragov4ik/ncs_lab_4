@@ -1,0 +1,37 @@
+header {
+    padding: 0.3em 2vw;
+    margin: 0;
+    border: 0;
+    color: white;
+    background-color: darkgray;
+}
+
+body {
+    font: normal 1em Verdana, Arial;
+    background-color: beige;
+    margin: 0;
+}
+
+footer {
+    padding: 0.3em 1em;
+    padding: 7vh 2vw;
+    background-color: darkgray;
+}
+
+p {
+    margin: 0.5em 0em;
+}
+
+header a {
+    text-decoration: none;
+}
+
+#site_name {
+    margin: 0.3em 0em;
+    color: black;
+}
+
+#content {
+    align-self: center;
+    margin: 3vh 10vw;
+}

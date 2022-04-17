@@ -27,17 +27,24 @@ def get_all_feedback():
         return cur.fetchall()
 
 @app.route("/")
+@app.route("/index.html")
 def index():
     return render_template("index.html")
 
 @app.route("/feedback", methods=['GET', 'POST'])
 def feedback():
     if request.method == "POST":
+        print(request.form)
         post_feedback(
             request.form['author'],
             request.form['text']
         )
-        return make_response("Added feedback", 200)
+        entries = get_all_feedback()
+        return render_template(
+            "feedback.html",
+            entries=entries,
+            submitted=True
+        )
     elif request.method == "GET":
         entries = get_all_feedback()
         return render_template("feedback.html", entries=entries)
