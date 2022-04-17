@@ -13,6 +13,11 @@ def close_connection(exception):
     
 def post_feedback(author, text):
     with get_db() as conn:
+        # Right way (+ escape)
+        # conn.cursor().execute(
+        #     "INSERT INTO feedback (author, text) VALUES (?, ?);",
+        #     (author, text)
+        # )
         q = "INSERT INTO feedback (author, text) VALUES ('{}', '{}');".format(
             author, text
         )
@@ -21,9 +26,8 @@ def post_feedback(author, text):
 
 def get_all_feedback():
     with get_db() as conn:
-        q = "SELECT author, text FROM feedback;"
         cur = conn.cursor()
-        cur.execute(q)
+        cur.execute("SELECT author, text FROM feedback;")
         return cur.fetchall()
 
 @app.route("/")
