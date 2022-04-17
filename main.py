@@ -16,7 +16,7 @@ def post_feedback(author, text):
         q = "INSERT INTO feedback (author, text) VALUES ('{}', '{}');".format(
             author, text
         )
-        conn.cursor().execute(q)
+        conn.cursor().executescript(q)
     print("Saved feedback {}: {}".format(author, text))
 
 def get_all_feedback():
