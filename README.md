@@ -2,8 +2,10 @@
 Intentionally vulnerable application (home assignment) for [S22] Network and Cyber Security course at Innopolis University.
 
 The application works on Flask framework and contains these intended vulnerabilities:
-
 * SQL Injection
+
+## Authors
+The assignment was done by Kirill Ivanov, Ilya Kolomin.
 
 ## Launch instructions
 
@@ -19,7 +21,8 @@ export FLASK_APP=main
 flask run
 ```
 
-## About vulnerabilities
+## Vulnerabilities
+Repository with fixed vulnerabilities can be found [here](https://github.com/bragov4ik/ncs_lab_4/tree/fixed_version)
 ### SQL Injection
 #### Description
 This vulnerability allows malicious users to execute unintended queries on the server database (or existing queries with unexpected parameters). It allows to perform some dangerous actions on the database, which include deletion of the records, stealing of the personal data, and etc.
@@ -90,3 +93,4 @@ conn.cursor().execute(
     (author, text)
 )
 ```
+#### [Fixed version link](https://github.com/bragov4ik/ncs_lab_4/blob/fixed_version/main.py#L16)
