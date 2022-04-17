@@ -1,21 +1,37 @@
+:root {
+    --darkdark: #1d1d1d;
+    --brightbright: #e2ede4;
+    --colored: #1d6a2f;
+    --colored_greyed: #6b9275;
+    --beige: beige;
+}
+
 header {
     padding: 0.3em 2vw;
+    margin: 0.3em 0em;
     margin: 0;
     border: 0;
-    color: white;
-    background-color: darkgray;
+    color: var(--brightbright);
+    background-color: var(--darkdark);
 }
 
 body {
     font: normal 1em Verdana, Arial;
-    background-color: beige;
+    background-color: var(--brightbright);
     margin: 0;
+    color: var(--darkdark);
+}
+
+a {
+    text-decoration: none;
+    color: var(--colored)
 }
 
 footer {
     padding: 0.3em 1em;
     padding: 7vh 2vw;
-    background-color: darkgray;
+    color: var(--brightbright);
+    background-color: var(--darkdark);
 }
 
 p {
@@ -24,11 +40,7 @@ p {
 
 header a {
     text-decoration: none;
-}
-
-#site_name {
-    margin: 0.3em 0em;
-    color: black;
+    color: var(--brightbright);
 }
 
 #content {

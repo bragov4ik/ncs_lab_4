@@ -10,6 +10,7 @@
 #feedback_form {
     display: flex;
     flex-direction: column;
+    gap: .7em;
 }
 
 #feedback_field {    
@@ -17,7 +18,7 @@
 }
 
 #submitted {
-    color: grey;
+    color: var(--colored_greyed);
 }
 
 .list {
@@ -36,9 +37,10 @@
 }
 
 .author {
-    color: grey;
+    color: var(--colored_greyed);
+    font-style: italic;
 }
 
 .paragraph {
-    font-style: italic;
+    font-style: normal;
 }
