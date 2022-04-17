@@ -15,23 +15,14 @@ def close_connection(exception):
     
 def post_feedback(author, text):
     with get_db() as conn:
-        # Right way (+ escape)
-        # author = author[:128]
-        # text = text[:512]
-        # author = escape(author)
-        # text = escape(text)
-        # conn.cursor().execute(
-        #     "INSERT INTO feedback (author, text) VALUES (?, ?);",
-        #     (author, text)
-        # )
-        author = sanitize(author)
-        text = sanitize(text)
         author = author[:128]
         text = text[:512]
-        q = "INSERT INTO feedback (author, text) VALUES ('{}', '{}');".format(
-            author, text
+        author = escape(author)
+        text = escape(text)
+        conn.cursor().execute(
+            "INSERT INTO feedback (author, text) VALUES (?, ?);",
+            (author, text)
         )
-        conn.cursor().executescript(q)
     print("Saved feedback {}: {}".format(author, text))
 
 def get_all_feedback():
