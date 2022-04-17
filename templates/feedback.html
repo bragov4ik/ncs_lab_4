@@ -1,0 +1,21 @@
+<html>
+
+<head></head>
+
+<body>
+    <header>
+        <title>Sample app feedback</title>
+    </header>
+
+    <h1>Feedback</h1>
+    
+    <div>
+        {% for e in entries %}
+            <h3>{{ e[0] }}</h3>
+            <p>{{ e[1] }}</p>
+        {% endfor %}
+    </div>
+
+</body>
+
+</html>
