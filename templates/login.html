@@ -1,0 +1,11 @@
+{% extends "template.html" %}
+
+
+{% block content %}
+    <form action="/set_cookie" method = "GET">
+        <h1>Login page</h1>
+        <p><input type="text" name="login"/></p>
+        <p><input type="text" name="password"/></p>
+        <p><input type="submit" value="Login"/></p>
+    </form>
+{% endblock %}

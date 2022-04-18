@@ -1,2 +1,2 @@
-SCHEMA = './schema.sql'
-DATABASE = './database.db'
+SCHEMA = './db/schema.sql'
+DATABASE = './db/database.db'
