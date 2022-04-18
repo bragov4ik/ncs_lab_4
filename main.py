@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request, g, redirect
+from markupsafe import escape
 
 from db import get_db
-from utils import prepare_response, sanitize
+from utils import prepare_response
 
 app = Flask(__name__)
 DATABASE = './database.db'
@@ -107,15 +108,14 @@ def user_page():
     if not token:
         return redirect("/login")
     is_admin = get_is_admin(token)
-    return prepare_response(render_template("user_page.html", admin="" if is_admin else "hidden=\"\""))
+    return prepare_response(render_template("user_page.html", admin=bool(is_admin)))
 
 
 @app.route("/admin_only", methods=['GET'])
 def admin_only():
     # Broken access control error
     # Right way:
-    # token = request.cookies.get('auth')
-    # if get_is_admin(token):
-    #     return prepare_response(render_template("admin_only.html"))
-    # return prepare_response("You are not admin!")
-    return prepare_response(render_template("admin_only.html"))
+    token = request.cookies.get('auth')
+    if get_is_admin(token):
+        return prepare_response(render_template("admin_only.html"))
+    return prepare_response("You are not admin!")

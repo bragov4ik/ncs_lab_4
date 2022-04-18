@@ -3,6 +3,8 @@
 
 {% block content %}
     <p><h1>Some userpage info</h1></p>
-    <p><a href="/admin_only" {{ admin }}>Admin only page!</a></p>
+    {% if admin %}
+        <p><a href="/admin_only">Admin only page!</a></p>
+    {% endif %}
 {% endblock %}
 
