@@ -94,3 +94,59 @@ conn.cursor().execute(
 )
 ```
 #### [Fixed version link](https://github.com/bragov4ik/ncs_lab_4/blob/fixed_version/main.py#L16)
+
+### Broken Access Control
+
+#### Description
+
+In this vulnerability the access control mechanism is not properly implemented which may result in unauthenticated access to the server's resources.  
+
+#### Technical description
+
+There is a login page `/login` which in case of successful logging in redirects to the users page `/user_page` and stores auth token in cookies.
+
+The server checks if the logged user has the admin rights. There is a link to the special admin's page, which is hidden for non-admin users.
+```html
+<p><h1>Some userpage info</h1></p>
+<p><a href="/admin_only" hidden="">Admin only page!</a></p>
+```
+
+However, this is the only check and defence against unauthorized access to this page. 
+
+```python
+@app.route("/admin_only", methods=['GET'])
+def admin_only():
+    return prepare_response(render_template("admin_only.html"))
+```
+_No admin rights check_
+
+So that the attacker could get access to this page's by only requesting this page's reference, which could be easily obtained from the source code of the page.
+
+![Non-admin user logging in](./images/BAC_logging.png)
+_Non-admin user logging in_
+
+![Userpage](./images/BAC_userpage.png)
+_Userpage without reference to the admin's site_
+
+![Hidden](./images/BAC_hidden.png)
+_Hidden link in page's code_
+
+![BAC](./images/BAC_access.png)
+_Unauthorized access to admin's page_
+
+#### Fixing recommendations
+
+1. Add access control check on the admins site
+```python
+@app.route("/admin_only", methods=['GET'])
+def admin_only():
+    # Broken access control error
+    # Right way:
+    token = request.cookies.get('auth')
+    if get_is_admin(token):
+        return prepare_response(render_template("admin_only.html"))
+    return prepare_response("You are not admin!")
+```
+
+2. Do not **hide** html elements that you don't want to show. Erase them instead. 
+
